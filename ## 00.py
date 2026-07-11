@@ -1,13 +1,15 @@
-# 00. Pytorch Fundamentals
-# Resource notebook : https://www.learnpytorch.io/00_pytorch_fundamentals/
-
+"""
+00. Pytorch Fundamentals
+Resource notebook : https://www.learnpytorch.io/00_pytorch_fundamentals/
+"""
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# 1. Introduction to Tensors 
-# pytorch tensors are created using torch.tensor() function.  LINK : https://docs.pytorch.org/docs/2.13/tensors.html
+"""
+1. Introduction to Tensors 
+pytorch tensors are created using torch.tensor() function.  LINK : https://docs.pytorch.org/docs/2.13/tensors.html
 
 #scalar:
 scalar = torch.tensor(7)
@@ -32,3 +34,44 @@ print(matrix[0]) # get the first row of the matrix
 tensor = torch.tensor([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]], [[13, 14, 15], [16, 17, 18]]])
 print(tensor)
 print(tensor.ndim) # 3-d tensor
+print(tensor.shape) # shape of the tensor
+
+### Random Tensors
+# Random tensors are tensors of arbitrary size filled with random numbers.
+random_tensor = torch.rand(3, 4)
+print(random_tensor)
+print(random_tensor.ndim) # 2-d tensor
+
+#Creating a random tensor with similar shape to an image tensor (height, width, color channels)
+#Troch random tensors - https://pytorch.org/docs/stable/generated/torch.rand.html
+random_image_size_tensor = torch.rand(224, 224, 3) # height, width, color channels
+print(random_image_size_tensor.shape, random_image_size_tensor.ndim) # shape and dimension of the tensor
+
+#Tensor of zeros
+#Torch zeros tensor - https://pytorch.org/docs/stable/generated/torch.zeros.html
+ones_tensor = torch.ones(3, 4)
+print(ones_tensor)
+print(ones_tensor.dtype)
+
+
+###Creatinfg a range of tensors and tensors-like
+#tensor.arange() - https://pytorch.org/docs/stable/generated/torch.arange.html  to make a range of tensors
+Arranged_tensor = torch.arange(start=1, end=11, step=1) # create a tensor from 1 to 10
+print(Arranged_tensor) # 1-d tensor from 1 to 10
+
+#Creating a tensor-like of another tensor
+tensor_zeros_like = torch.zeros_like(Arranged_tensor) # create a tensor of zeros with the same shape as random_tensor
+print(tensor_zeros_like) 
+"""
+
+##Tensor Datatypes
+#Tensors can have different datatypes. The default datatype is float32.
+#recuires_grad=False means that the tensor will not be tracked for gradients during backpropagation.
+float_32_tensor = torch.tensor([3.0, 6.0, 9.0], dtype=torch.float32, device=None, requires_grad=False)
+print(float_32_tensor.dtype) 
+
+""" The three main issues that i'll probably run into when working with pytorch & deep learning are:
+1. Tensor datatypes
+2. Tensor shapes
+3. Tensor device (CPU vs GPU)
+"""
