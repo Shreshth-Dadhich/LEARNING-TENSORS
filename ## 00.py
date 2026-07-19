@@ -116,6 +116,7 @@ Tensor_A = torch.tensor([[1, 2],
                          [3, 4], 
                          [5, 6]]) # shape (3,2)
 
+
 Tensor_B = torch.tensor([[7, 8], 
                          [9, 10], 
                          [11, 12]]) # shape (3,2)
@@ -131,5 +132,59 @@ tensor_matmul_AB = torch.matmul(Tensor_A, Tensor_B_T)
 print(tensor_matmul_AB, '\n', tensor_matmul_AB.shape)
 """
 
+"""
+To get the minimum and maximum values of a tensor, you can use the torch.min() and torch.max() functions. These functions return the minimum and maximum values of the tensor, respectively.
+To get the sum of all the elements in a tensor, you can use the torch.sum() function. This function returns the sum of all the elements in the tensor.
+
+To get the mean of all the elements in a tensor, you can use the torch.mean() function. This function returns the mean of all the elements in the tensor.
+The torch.mean() function requires the input tensor to be of type float. If the input tensor is of type int, you can convert it to float using the .float() method before calling torch.mean().
+
+torch.min(Tensor_A) # returns the minimum value of Tensor_A  (Tensor_A.min() also works)
+torch.max(Tensor_A) # returns the maximum value of Tensor_A  (Tensor_A.max() also works)
+torch.sum(Tensor_A) # returns the sum of all elements in Tensor_A  (Tensor_A.sum() also works)
+
+torch.mean(Tensor_A.float()) # returns the mean of all elements in Tensor_A  (Tensor_A.float().mean() also works)
+"""
+
+"""
+The torch.argmax() function returns the index of the maximum value in a tensor.     (Tensor_A.argmax() also works)
+The torch.argmin() function returns the index of the minimum value in a tensor.     (Tensor_A.argmin() also works)
+"""
+
+#Reshaping, stacking, squeezing, and unsqueezing tensors
+
+"""
+Reshaping - reshapes an input tensor to a defined shape.
+View - Return a view of an input tensor of a defined shape while keeping the same data as the original tensor.
+Stacking - combine multiple tensors on top of each other (v-stack) or side by side (h-stack).
+Squeezing - removes all '1' dimensions from the shape of a tensor.
+Unsqueezing - adds a '1' dimension to the target tensor
+Permute - rearranges the dimensions of a tensor according to a specified order. 
+"""
+"""
+Tensor_C = torch.arange(1, 10)
+print(Tensor_C, Tensor_C.shape)
+
+Tensor_C_reshaped = Tensor_C.reshape(3, 3)
+print(Tensor_C_reshaped, Tensor_C_reshaped.shape)  
+
+Tensor_C_view = Tensor_C.view(3, 3 )
+print(Tensor_C_view, Tensor_C_view.shape)
+"""
+"""
+ntensor = torch.tensor([1,2,3,4], device="cpu")
+print(ntensor, ntensor.device, ntensor.dtype)
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+#As ntensor is running on the CPU by default, we need to shift it to the GPU if we want to have greater computational power
+ntensor_on_gpu = ntensor.to(device)
+print(ntensor_on_gpu)
+"""
+
+# To convert a tensor to an numpy array, The tensor needs to be running on the cpu
+# We can do this by using tensor.cpu()
 
 
+
+"""END OF 00 PYTORCH FUNDAMENTALS"""
